@@ -1,3 +1,7 @@
+# Provenance: written for JASPAR 0.99.5 with AI assistance.
+# Assisted-by: Claude Code (claude-sonnet-5-5), under the direction of the
+# maintainer, Damir Baranasic. See inst/NEWS (0.99.6) and the git history.
+
 # Internal helpers that talk to AnnotationHub. They are kept apart from the
 # class definition so that the record selection, the download and the checks on
 # the downloaded file can be tested without a network connection. Nothing in

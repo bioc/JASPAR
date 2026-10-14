@@ -1,3 +1,7 @@
+# Provenance: written for JASPAR 0.99.5 with AI assistance.
+# Assisted-by: Claude Code (claude-sonnet-5-5), under the direction of the
+# maintainer, Damir Baranasic. See inst/NEWS (0.99.6) and the git history.
+
 # These tests talk to AnnotationHub and to the servers behind it. They use
 # JASPAR2024 and JASPAR2022 only, so that they do not depend on the download
 # location of any other release.

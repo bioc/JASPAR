@@ -2,7 +2,7 @@ Package: JASPAR
 Type: Package
 Encoding: UTF-8
 Title: Data package for JASPAR databases
-Version: 0.99.5
+Version: 0.99.6
 Authors@R: person(given = "Damir", family = "Baranasic", 
                   role = c("aut", "cre"),
                   email = "damir.baranasic@lms.mrc.ac.uk", 

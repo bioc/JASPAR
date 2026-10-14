@@ -11,6 +11,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<!-- Provenance: this vignette was rewritten for JASPAR 0.99.5 with AI
+     assistance.
+     Assisted-by: Claude Code (claude-sonnet-5-5), under the direction of the
+     maintainer, Damir Baranasic. See inst/NEWS (0.99.6). -->
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,

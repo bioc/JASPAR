@@ -1,3 +1,8 @@
+# Provenance: large parts of this file were rewritten for JASPAR 0.99.5 with
+# AI assistance.
+# Assisted-by: Claude Code (claude-sonnet-5-5), under the direction of the
+# maintainer, Damir Baranasic. See inst/NEWS (0.99.6) and the git history.
+
 #' JASPAR object class
 #'
 #' @description The JASPAR object class is a thin class for storing the

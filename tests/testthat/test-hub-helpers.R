@@ -1,3 +1,7 @@
+# Provenance: written for JASPAR 0.99.5 with AI assistance.
+# Assisted-by: Claude Code (claude-sonnet-5-5), under the direction of the
+# maintainer, Damir Baranasic. See inst/NEWS (0.99.6) and the git history.
+
 # These tests need no network. They work on hand-made metadata, on synthetic
 # SQLite headers, and on a replacement for AnnotationHub::cache(). The
 # accessions are made up on purpose: the package must not depend on specific
