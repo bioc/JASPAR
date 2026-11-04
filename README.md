@@ -13,11 +13,22 @@ The JASPAR databases are SQLite files that are registered as resources in [Annot
 
 This R package makes the content of the main JASPAR database accessible for downstream analyses in R/Bioconductor pipelines. The releases that are registered in AnnotationHub are listed by `getAvailableJASPARVersions()`. The default version is `JASPAR2024`.
 
+It replaces the per-release data packages JASPAR2022 and JASPAR2024: a new JASPAR release only needs a new AnnotationHub resource, not a new package. The vignette shows how to move code from those packages.
+
 ---
 
 ## 🔧 Installation
 
-You can install the package from this repository:
+Install the package from [Bioconductor](https://bioconductor.org/packages/JASPAR):
+
+```r
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("JASPAR")
+```
+
+The development version can be installed from this repository:
 
 ```r
 # install.packages("remotes")

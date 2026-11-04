@@ -1,3 +1,23 @@
+CHANGES IN VERSION 0.99.7
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o The package requires R >= 4.6.0 (was 4.5.0).
+
+DOCUMENTATION
+
+    o New section in the vignette on how JASPAR replaces the per-release data
+      packages (JASPAR2022, JASPAR2024), with code to move from them.
+    o New CITATION file: the package and the papers of the JASPAR 2022, 2024
+      and 2026 releases.
+    o The README explains how to install the package from Bioconductor.
+    o Shorter Description in DESCRIPTION. BugReports points to the GitHub
+      issues page.
+    o These changes were written with Claude Code (Anthropic, model Claude
+      Opus 5.5) under the direction of the maintainer; the new files state
+      their provenance.
+
 CHANGES IN VERSION 0.99.6
 -------------------------
 

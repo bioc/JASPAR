@@ -14,7 +14,11 @@ vignette: >
 <!-- Provenance: this vignette was rewritten for JASPAR 0.99.5 with AI
      assistance.
      Assisted-by: Claude Code (claude-sonnet-5-5), under the direction of the
-     maintainer, Damir Baranasic. See inst/NEWS (0.99.6). -->
+     maintainer, Damir Baranasic. See inst/NEWS (0.99.6).
+     The section "Replacing the per-release JASPAR packages" was added for
+     JASPAR 0.99.7 with AI assistance.
+     Assisted-by: Claude Code (claude-opus-5-5), under the direction of the
+     maintainer, Damir Baranasic. See inst/NEWS (0.99.7). -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -61,7 +65,9 @@ release you ask for, lets AnnotationHub download it once, and returns the path
 of the cached file. You can open this file with `r CRANpkg("RSQLite")` or use it
 with `r Biocpkg("TFBSTools")` [@Tan:2016]. The default release is JASPAR 2024
 [@Rauluseviciute:2024]. JASPAR 2022 [@10.1093/nar/gkab1113] can be retrieved as
-well.
+well. The package replaces the data packages that hold a single release, such as
+JASPAR2022 and JASPAR2024, see
+[Replacing the per-release JASPAR packages](#replacing).
 
 # Installation
 
@@ -194,6 +200,53 @@ count_profiles <- function(release) {
 }
 
 do.call(rbind, lapply(c("JASPAR2022", "JASPAR2024"), count_profiles))
+```
+
+# Replacing the per-release JASPAR packages {#replacing}
+
+Bioconductor has had one data package per JASPAR release: JASPAR2014,
+JASPAR2016, JASPAR2018, JASPAR2020, JASPAR2022 and JASPAR2024. Each of them
+holds a copy of one database, so every new release needed a new package. The
+*JASPAR* package holds no data. It retrieves each release from AnnotationHub,
+so a new release only needs a new AnnotationHub resource.
+
+For JASPAR 2022 and later releases, *JASPAR* replaces the per-release packages,
+and JASPAR2022 and JASPAR2024 are planned to be deprecated in its favour. The
+releases before 2022 are not in AnnotationHub, so they cannot be retrieved with
+this package.
+
+Code written for the per-release packages needs few changes. With the
+JASPAR2024 package, `db()` returned the path of its database:
+
+```{r old-jaspar2024, eval = FALSE}
+library(JASPAR2024)
+con <- dbConnect(SQLite(), db(JASPAR2024()))
+```
+
+With *JASPAR*, name the release instead:
+
+```{r new-jaspar2024, eval = FALSE}
+con <- dbConnect(SQLite(), db(JASPAR(version = "JASPAR2024")))
+```
+
+Both packages define a function `db()`. If both are attached, the one attached
+last is used, so write `JASPAR::db()` in that case.
+
+The JASPAR2022 package was used through TFBSTools, which has methods for its
+`JASPAR2022` object:
+
+```{r old-jaspar2022, eval = FALSE}
+library(JASPAR2022)
+getMatrixByID(JASPAR2022, ID = "MA0139.1")
+```
+
+With *JASPAR*, give TFBSTools a connection to the database of that release:
+
+```{r new-jaspar2022}
+jaspar2022 <- JASPAR(version = "JASPAR2022", hub = ah)
+con <- dbConnect(SQLite(), db(jaspar2022), flags = SQLITE_RO)
+getMatrixByID(con, ID = "MA0139.1")
+dbDisconnect(con)
 ```
 
 # Working offline
